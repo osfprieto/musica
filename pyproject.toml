@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "musica"
+version = "0.1.0"
+description = "Turn any YouTube video into instrument partitures for MuseScore."
+requires-python = ">=3.9"
+dependencies = [
+    "yt-dlp>=2023.0",
+    "demucs>=4.0",
+    "basic-pitch>=0.3",
+    "music21>=9.1",
+    "click>=8.0",
+]
+
+[project.scripts]
+musica = "musica.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
