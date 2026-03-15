@@ -19,12 +19,37 @@ Install these system tools before running:
 
 ## Installation
 
+### 1. Create and activate a virtual environment
+
+**Windows (PowerShell)**
+```powershell
+cd musica
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+```
+
+**macOS / Linux**
 ```bash
 cd musica
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+> **Note:** Python 3.9+ is required. If you encounter TensorFlow installation issues with a very new Python release, use Python 3.11 or 3.12.
+
+### 2. Install the package
+
+```bash
 pip install -e .
 ```
 
 This installs all Python dependencies: `yt-dlp`, `demucs`, `basic-pitch`, `music21`, `click`.
+
+### 3. Deactivate when done
+
+```bash
+deactivate
+```
 
 ## Usage
 
