@@ -6,11 +6,11 @@ build-backend = "setuptools.build_meta"
 name = "musica"
 version = "0.1.0"
 description = "Turn any YouTube video into instrument partitures for MuseScore."
-requires-python = ">=3.9,<3.13"
+requires-python = ">=3.9,<3.14"
 dependencies = [
     "yt-dlp>=2023.0",
     "demucs>=4.0",
-    "basic-pitch>=0.3",
+    "basic-pitch[onnx]>=0.3",
     "music21>=9.1",
     "click>=8.0",
 ]
