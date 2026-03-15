@@ -13,7 +13,7 @@ Turn any YouTube video into instrument partitures (sheet music) that open direct
 
 Install these system tools before running:
 
-- **Python 3.9+**
+- **Python 3.9 – 3.12** — Python 3.13+ is not yet supported by TensorFlow (required by `basic-pitch`). Download from [python.org](https://www.python.org/downloads/) and install Python 3.11 or 3.12.
 - **ffmpeg** — [download](https://ffmpeg.org/download.html) and add to PATH
 - **MuseScore 4** — for viewing/editing the output files
 
@@ -21,21 +21,28 @@ Install these system tools before running:
 
 ### 1. Create and activate a virtual environment
 
-**Windows (PowerShell)**
-```powershell
+> **Note:** Python 3.9 – 3.12 is required. `basic-pitch` depends on TensorFlow, which has no Windows builds for Python 3.13+. Download Python 3.12 from [python.org](https://www.python.org/downloads/) if needed.
+
+**Windows (Command Prompt)**
+
+Use the `py` launcher to target a specific Python version when creating the venv:
+```cmd
 cd musica
-python -m venv .venv
-.venv\Scripts\Activate.ps1
+py -3.12 -m venv .venv
+.venv\Scripts\activate.bat
+```
+
+To confirm you're using the right version after activating:
+```cmd
+python --version
 ```
 
 **macOS / Linux**
 ```bash
 cd musica
-python3 -m venv .venv
+python3.12 -m venv .venv
 source .venv/bin/activate
 ```
-
-> **Note:** Python 3.9+ is required. If you encounter TensorFlow installation issues with a very new Python release, use Python 3.11 or 3.12.
 
 ### 2. Install the package
 
