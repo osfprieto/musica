@@ -13,8 +13,8 @@ Turn any YouTube video into instrument partitures (sheet music) that open direct
 
 Install these system tools before running:
 
-- **Python 3.9 – 3.13** — Download from [python.org](https://www.python.org/downloads/).
-- **ffmpeg** — [download](https://ffmpeg.org/download.html) and add to PATH
+- **Python 3.9+** — Download from [python.org](https://www.python.org/downloads/).
+- **ffmpeg (shared build)** — Required for audio decoding/encoding. On **Windows**, download the **full-shared** build from [gyan.dev](https://www.gyan.dev/ffmpeg/builds/) (`ffmpeg-release-full-shared.7z`), extract it, and add its `bin` folder to PATH. The static "full" build will not work — torchcodec (used by torchaudio internally) needs the FFmpeg `.dll` files. On macOS/Linux install via `brew install ffmpeg` or your package manager.
 - **MuseScore 4** — for viewing/editing the output files
 
 ## Installation
@@ -41,7 +41,13 @@ source .venv/bin/activate
 pip install -e .
 ```
 
-This installs all Python dependencies: `yt-dlp`, `demucs`, `basic-pitch` (ONNX backend), `music21`, `click`.
+Then install `basic-pitch` without its TensorFlow dependency (the bundled ONNX model is used instead):
+
+```bash
+pip install basic-pitch --no-deps
+```
+
+This installs all Python dependencies: `yt-dlp`, `demucs`, `torchcodec`, `basic-pitch` (ONNX backend via `onnxruntime`), `music21`, `click`.
 
 ### 3. Deactivate when done
 

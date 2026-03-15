@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import logging
 import subprocess
-import shutil
+import sys
 from pathlib import Path
 
 logger = logging.getLogger(__name__)
@@ -18,16 +18,12 @@ def separate_stems(wav_path: Path, output_dir: Path) -> dict[str, Path]:
 
     Returns paths for: vocals, bass, drums, other.
     """
-    if shutil.which("python") is None and shutil.which("python3") is None:
-        raise RuntimeError("Python executable not found on PATH.")
-
     output_dir.mkdir(parents=True, exist_ok=True)
 
     logger.info("Separating stems with Demucs …")
 
     cmd = [
-        "python", "-m", "demucs",
-        "--two-stems=None",  # keep all four stems
+        sys.executable, "-m", "demucs",
         "-n", "htdemucs",
         "-o", str(output_dir),
         str(wav_path),

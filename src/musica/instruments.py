@@ -73,7 +73,7 @@ INSTRUMENTS: dict[str, InstrumentProfile] = {
     ),
     "double_bass": InstrumentProfile(
         name="double_bass",
-        music21_class=m21inst.DoubleBass,
+        music21_class=m21inst.Contrabass,
         family=InstrumentFamily.STRINGS,
         midi_low=28,   # E1
         midi_high=67,  # G4

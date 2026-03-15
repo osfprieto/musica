@@ -17,7 +17,7 @@ __pycache__/
 *.mid
 *.xml
 *.mxl
-output/
+_workdir/
 
 # OS / editor
 .DS_Store

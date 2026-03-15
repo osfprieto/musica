@@ -15,9 +15,10 @@ def transcribe_to_midi(wav_path: Path, output_dir: Path) -> Path:
     """
     try:
         from basic_pitch.inference import predict_and_save
+        from basic_pitch import ICASSP_2022_MODEL_PATH
     except ImportError as exc:
         raise RuntimeError(
-            "basic-pitch is not installed. Run: pip install basic-pitch"
+            "basic-pitch is not installed. Run: pip install basic-pitch --no-deps"
         ) from exc
 
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -28,9 +29,10 @@ def transcribe_to_midi(wav_path: Path, output_dir: Path) -> Path:
         audio_path_list=[wav_path],
         output_directory=output_dir,
         save_midi=True,
+        sonify_midi=False,
         save_model_outputs=False,
         save_notes=False,
-        sonify_midi=False,
+        model_or_model_path=ICASSP_2022_MODEL_PATH,
     )
 
     # Basic Pitch writes <stem>_basic_pitch.mid

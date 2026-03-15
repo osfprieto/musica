@@ -21,7 +21,7 @@ def _setup_logging(verbose: bool) -> None:
 
 
 @click.command()
-@click.argument("url")
+@click.argument("url", required=False, default=None)
 @click.option(
     "-o", "--output",
     type=click.Path(path_type=Path),
@@ -113,6 +113,9 @@ def main(
         for name, parts in sorted(ENSEMBLES.items()):
             click.echo(f"  {name}: {', '.join(parts)}")
         return
+
+    if not url:
+        raise click.UsageError("Missing argument 'URL'.")
 
     _setup_logging(verbose)
 
